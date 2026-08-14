@@ -53,15 +53,13 @@ $ ./monitor --live
 
 ## 📊 Stats
 
+> Stats auto-generated daily by GitHub Actions — zero external service dependency
+
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=chu0119&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00E5FF&icon_color=FF2E97" height="165" alt="stats"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=chu0119&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00E5FF" height="165" alt="langs"/>
+  <img src="assets/stats.svg" alt="stats"/>
 </p>
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=chu0119&theme=tokyonight&hide_border=true&background=0D1117&ring=00E5FF&fire=FF2E97&currStreakLabel=00E5FF" width="520" alt="streak"/>
-</p>
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=chu0119&theme=onestar&no-frame=true&no-bg=true&column=7" alt="trophy"/>
+  <img src="assets/langs.svg" alt="langs"/>
 </p>
 
 ## 📡 Recent Activity
