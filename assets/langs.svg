@@ -8,21 +8,21 @@
   <rect width="440" height="124" fill="#0d1117" rx="12"/>
   <rect width="440" height="44" rx="12" fill="url(#headerGrad2)" opacity="0.15"/>
   <text x="16" y="29" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#00E5FF">💻 Top Languages</text>
-  <rect x="16" y="50" width="208.0" height="8" fill="#3572A5" rx="2"/>
-  <rect x="224.0" y="50" width="64.0" height="8" fill="#F7DF1E" rx="2"/>
-  <rect x="288.0" y="50" width="64.0" height="8" fill="#3178C6" rx="2"/>
-  <rect x="352.0" y="50" width="16.0" height="8" fill="#701516" rx="2"/>
-  <rect x="368.0" y="50" width="16.0" height="8" fill="#4F5D95" rx="2"/>
-  <rect x="384.0" y="50" width="16.0" height="8" fill="#89E051" rx="2"/>
-  <rect x="400.0" y="50" width="16.0" height="8" fill="#E34C26" rx="2"/>
+  <rect x="16" y="50" width="181.8181818181818" height="8" fill="#3572A5" rx="2"/>
+  <rect x="197.8181818181818" y="50" width="72.72727272727273" height="8" fill="#F7DF1E" rx="2"/>
+  <rect x="270.54545454545456" y="50" width="72.72727272727273" height="8" fill="#3178C6" rx="2"/>
+  <rect x="343.2727272727273" y="50" width="18.181818181818183" height="8" fill="#701516" rx="2"/>
+  <rect x="361.4545454545455" y="50" width="18.181818181818183" height="8" fill="#4F5D95" rx="2"/>
+  <rect x="379.6363636363637" y="50" width="18.181818181818183" height="8" fill="#89E051" rx="2"/>
+  <rect x="397.81818181818187" y="50" width="18.181818181818183" height="8" fill="#E34C26" rx="2"/>
   <circle cx="16" cy="82" r="4" fill="#3572A5"/>
-  <text x="24" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Python 52.0%</text>
+  <text x="24" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Python 45.5%</text>
   <circle cx="108" cy="82" r="4" fill="#F7DF1E"/>
-  <text x="116" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">JavaScript 16.0%</text>
+  <text x="116" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">JavaScript 18.2%</text>
   <circle cx="228" cy="82" r="4" fill="#3178C6"/>
-  <text x="236" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">TypeScript 16.0%</text>
+  <text x="236" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">TypeScript 18.2%</text>
   <circle cx="348" cy="82" r="4" fill="#701516"/>
-  <text x="356" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Ruby 4.0%</text>
+  <text x="356" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Ruby 4.5%</text>
   <circle cx="16" cy="104" r="4" fill="#4F5D95"/>
-  <text x="24" y="108" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">PHP 4.0%</text>
+  <text x="24" y="108" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">PHP 4.5%</text>
 </svg>
