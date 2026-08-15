@@ -65,9 +65,9 @@ $ ./monitor --live
 ## 📡 Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- ⭐ **huangguang1999/ccstatusline-zh** — starred it
 - 🚀 **xingchuan-ti** — pushed to it
-- ⭐ **Ed1s0nZ/CyberStrikeAI** — starred it
-- 🚀 **fscan-toolkit** — pushed to it
+- 🚀 **uusec-waf** — pushed to it
 <!-- END ACTIVITY -->
 
 ```text
