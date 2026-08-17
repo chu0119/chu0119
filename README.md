@@ -65,11 +65,11 @@ $ ./monitor --live
 ## 📡 Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- ⭐ **nginx/nginx** — starred it
 - ⭐ **mickael-kerjean/filestash** — starred it
 - ⭐ **xingchuan-ti** — starred it
 - 📝 **cloudreve/cloudreve** — issues in it
 - ⭐ **huangguang1999/ccstatusline-zh** — starred it
-- 🚀 **uusec-waf** — pushed to it
 <!-- END ACTIVITY -->
 
 ```text
