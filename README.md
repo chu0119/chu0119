@@ -65,11 +65,11 @@ $ ./monitor --live
 ## 📡 Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- ⭐ **1Panel-dev/CordysCRM** — starred it
 - ⭐ **nginx/nginx** — starred it
 - ⭐ **mickael-kerjean/filestash** — starred it
 - ⭐ **xingchuan-ti** — starred it
 - 📝 **cloudreve/cloudreve** — issues in it
-- ⭐ **huangguang1999/ccstatusline-zh** — starred it
 <!-- END ACTIVITY -->
 
 ```text
