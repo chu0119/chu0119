@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate profile stats SVGs using GitHub API. No external service dependencies."""
 import json
+import math
 import os
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -213,6 +214,73 @@ def svg_langs(stats):
     return svg
 
 
+def _star_points(cx, cy, r_out=7.0, r_in=2.9):
+    pts = []
+    for i in range(10):
+        ang = math.radians(-90 + i * 36)
+        r = r_out if i % 2 == 0 else r_in
+        pts.append(f"{cx + r * math.cos(ang):.1f},{cy + r * math.sin(ang):.1f}")
+    return " ".join(pts)
+
+
+def _achievement_icon(kind, cx, cy):
+    """Self-drawn vector icons — no emoji, viewer-font independent."""
+    if kind == "stars":
+        return f'  <polygon points="{_star_points(cx, cy)}" fill="#FFC94D"/>\n'
+    if kind == "repos":
+        return (f'  <rect x="{cx-6}" y="{cy-6}" width="12" height="12" rx="2" '
+                f'fill="none" stroke="#00E5FF" stroke-width="1.5"/>\n'
+                f'  <line x1="{cx-6}" y1="{cy-2}" x2="{cx+6}" y2="{cy-2}" '
+                f'stroke="#00E5FF" stroke-width="1.5"/>\n')
+    if kind == "streak":
+        pts = (f"{cx+2},{cy-8} {cx-4},{cy+1} {cx-0.5},{cy+1} "
+               f"{cx-2},{cy+8} {cx+4},{cy-1} {cx+0.5},{cy-1}")
+        return f'  <polygon points="{pts}" fill="#FF2E97"/>\n'
+    # contrib: mini ascending bar chart
+    bars = ""
+    for i, h in enumerate((6, 10, 14)):
+        bx = cx - 7 + i * 6
+        bars += f'  <rect x="{bx}" y="{cy+7-h}" width="4" height="{h}" fill="#10B981" rx="1"/>\n'
+    return bars
+
+
+def svg_achievements(stats, streak_data):
+    """Terminal-style 'ACHIEVEMENTS UNLOCKED' panel."""
+    def fmt(n):
+        return f"{n:,}" if n >= 1000 else str(n)
+
+    tiles = [
+        ("stars", str(stats["stars"]), "TOTAL STARS"),
+        ("repos", str(stats["repos"]), "REPOSITORIES"),
+        ("streak", f"{streak_data['current']} DAYS", f"LONGEST {streak_data['longest']}"),
+        ("contrib", fmt(stats["contributions"]), "CONTRIBUTIONS"),
+    ]
+
+    W, H = 720, 164
+    TILE_Y, TILE_W, TILE_H, GAP = 58, 163, 90, 12
+    tiles_svg = ""
+    for i, (kind, value, label) in enumerate(tiles):
+        tx = 16 + i * (TILE_W + GAP)
+        stroke = "#00E5FF" if i % 2 == 0 else "#FF2E97"
+        cx = tx + TILE_W // 2
+        tiles_svg += f'''  <rect x="{tx}" y="{TILE_Y}" width="{TILE_W}" height="{TILE_H}" rx="8" fill="#161b22" stroke="{stroke}" stroke-opacity="0.55"/>
+{_achievement_icon(kind, cx, TILE_Y + 24)}  <text x="{cx}" y="{TILE_Y + 56}" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">{value}</text>
+  <text x="{cx}" y="{TILE_Y + 76}" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#8b949e">{label}</text>
+'''
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+  <defs>
+    <linearGradient id="agrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#FF2E97"/>
+    </linearGradient>
+  </defs>
+  <rect width="{W}" height="{H}" fill="#0d1117" rx="12"/>
+  <rect width="{W}" height="44" rx="12" fill="url(#agrad)" opacity="0.15"/>
+  <text x="16" y="29" font-family="Consolas,Menlo,monospace" font-size="15" font-weight="700" letter-spacing="2" fill="#FF2E97">ACHIEVEMENTS UNLOCKED</text>
+{tiles_svg}</svg>'''
+
+
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     print(f"Fetching data for {USER}...")
@@ -231,6 +299,12 @@ def main():
     p = os.path.join(OUT_DIR, "langs.svg")
     with open(p, "w", encoding="utf-8") as f:
         f.write(svg_langs(stats))
+    print(f"  wrote {p}")
+
+    # Write achievements panel
+    p = os.path.join(OUT_DIR, "achievements.svg")
+    with open(p, "w", encoding="utf-8") as f:
+        f.write(svg_achievements(stats, streak_data))
     print(f"  wrote {p}")
 
     # Write streak badge (reuse streak_data in stats card, no separate file needed)
