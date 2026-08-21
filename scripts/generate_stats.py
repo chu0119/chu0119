@@ -240,7 +240,7 @@ def _achievement_icon(kind, cx, cy):
     bars = ""
     for i, h in enumerate((6, 10, 14)):
         bx = cx - 7 + i * 6
-        bars += f'  <rect x="{bx}" y="{cy+7-h}" width="4" height="{h}" fill="#10B981" rx="1"/>\n'
+        bars += f'  <rect x="{bx}" y="{cy+7-h}" width="4" height="{h}" fill="#27C93F" rx="1"/>\n'
     return bars
 
 

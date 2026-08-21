@@ -22,9 +22,9 @@
   <text x="447" y="114" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">2 DAYS</text>
   <text x="447" y="134" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#8b949e">LONGEST 5</text>
   <rect x="541" y="58" width="163" height="90" rx="8" fill="#161b22" stroke="#FF2E97" stroke-opacity="0.55"/>
-  <rect x="615" y="83" width="4" height="6" fill="#10B981" rx="1"/>
-  <rect x="621" y="79" width="4" height="10" fill="#10B981" rx="1"/>
-  <rect x="627" y="75" width="4" height="14" fill="#10B981" rx="1"/>
+  <rect x="615" y="83" width="4" height="6" fill="#27C93F" rx="1"/>
+  <rect x="621" y="79" width="4" height="10" fill="#27C93F" rx="1"/>
+  <rect x="627" y="75" width="4" height="14" fill="#27C93F" rx="1"/>
   <text x="622" y="114" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">579</text>
   <text x="622" y="134" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#8b949e">CONTRIBUTIONS</text>
 </svg>
