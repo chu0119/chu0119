@@ -108,7 +108,7 @@ fscan 图形化套件：命令生成器 + 报告解析器。
 $ sudo ./load_modules.sh
 ```
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack · 技术栈
 
 **Languages**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
@@ -132,7 +132,7 @@ $ sudo ./load_modules.sh
 $ ./monitor --live
 ```
 
-## 📊 Stats & Achievements
+## 📊 Stats & Achievements · 数据与成就
 
 > Stats & achievements auto-generated daily by GitHub Actions — zero external service dependency
 

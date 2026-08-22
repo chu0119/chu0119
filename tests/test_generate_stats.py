@@ -29,6 +29,8 @@ def test_embeds_real_values():
     assert "LONGEST 5" in s
     assert "TOTAL STARS" in s
     assert "CONTRIBUTIONS" in s
+    assert s.count("#27C93F") == 3
+    assert "#10B981" not in s
 
 
 def test_ascii_only_vector_icons():
