@@ -149,11 +149,11 @@ $ ./monitor --live
 ## 📡 Recent Activity · 最近动态
 
 <!-- BEGIN ACTIVITY -->
+- 🚀 **liuliang-audit** — pushed to it
 - ⭐ **1Panel-dev/CordysCRM** — starred it
 - ⭐ **nginx/nginx** — starred it
 - ⭐ **mickael-kerjean/filestash** — starred it
 - ⭐ **xingchuan-ti** — starred it
-- 📝 **cloudreve/cloudreve** — issues in it
 <!-- END ACTIVITY -->
 
 ```text
