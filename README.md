@@ -149,11 +149,11 @@ $ ./monitor --live
 ## 📡 Recent Activity · 最近动态
 
 <!-- BEGIN ACTIVITY -->
+- 📦 **AegisIR** — released it
+- ⭐ **yyhuni/xingrin** — starred it
+- ⭐ **chen08209/FlClash** — starred it
 - ✨ **log-audit** — created it
 - 🚀 **liuliang-audit** — pushed to it
-- ⭐ **1Panel-dev/CordysCRM** — starred it
-- ⭐ **nginx/nginx** — starred it
-- ⭐ **mickael-kerjean/filestash** — starred it
 <!-- END ACTIVITY -->
 
 ```text
