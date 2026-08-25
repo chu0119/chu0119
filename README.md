@@ -149,11 +149,8 @@ $ ./monitor --live
 ## 📡 Recent Activity · 最近动态
 
 <!-- BEGIN ACTIVITY -->
-- 📦 **AegisIR** — released it
-- ⭐ **yyhuni/xingrin** — starred it
-- ⭐ **chen08209/FlClash** — starred it
-- ✨ **log-audit** — created it
-- 🚀 **liuliang-audit** — pushed to it
+- 📦 **sqlmap-toolkit** — released it
+- 🚀 **AegisIR** — pushed to it
 <!-- END ACTIVITY -->
 
 ```text
