@@ -10,7 +10,7 @@
   <text x="16" y="29" font-family="Consolas,Menlo,monospace" font-size="15" font-weight="700" letter-spacing="2" fill="#FF2E97">ACHIEVEMENTS UNLOCKED</text>
   <rect x="16" y="58" width="163" height="90" rx="8" fill="#161b22" stroke="#00E5FF" stroke-opacity="0.55"/>
   <polygon points="97.0,75.0 98.7,79.7 103.7,79.8 99.8,82.9 101.1,87.7 97.0,84.9 92.9,87.7 94.2,82.9 90.3,79.8 95.3,79.7" fill="#FFC94D"/>
-  <text x="97" y="114" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">102</text>
+  <text x="97" y="114" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">103</text>
   <text x="97" y="134" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#8b949e">TOTAL STARS</text>
   <rect x="191" y="58" width="163" height="90" rx="8" fill="#161b22" stroke="#FF2E97" stroke-opacity="0.55"/>
   <rect x="266" y="76" width="12" height="12" rx="2" fill="none" stroke="#00E5FF" stroke-width="1.5"/>
