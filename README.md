@@ -149,6 +149,7 @@ $ ./monitor --live
 ## 📡 Recent Activity · 最近动态
 
 <!-- BEGIN ACTIVITY -->
+- ⭐ **Tencent/AI-Infra-Guard** — starred it
 - ⭐ **zhaoxuya520/reverse-skill** — starred it
 - 📦 **sqlmap-toolkit** — released it
 - 🚀 **AegisIR** — pushed to it
