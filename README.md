@@ -153,7 +153,6 @@ $ ./monitor --live
 - ⭐ **Tencent/AI-Infra-Guard** — starred it
 - ⭐ **zhaoxuya520/reverse-skill** — starred it
 - 📦 **sqlmap-toolkit** — released it
-- 🚀 **AegisIR** — pushed to it
 <!-- END ACTIVITY -->
 
 ```text
