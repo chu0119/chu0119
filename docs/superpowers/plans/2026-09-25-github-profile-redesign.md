@@ -1,5 +1,7 @@
 # GitHub Profile Redesign Implementation Plan
 
+> Review amendment (2026-09-25): the final implementation intentionally replaces user-wide pull request, issue, contribution, and streak totals with metrics derived solely from `privacy: PUBLIC` repository connections. It also rejects GraphQL partial responses before any asset write. The task-by-task text below records the original execution plan; the review amendment is authoritative where they differ.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship a bilingual, privacy-safe GitHub profile with a polished Cyber Security Lab visual system, six coherent featured projects, and reliable repository-owned dynamic assets.
@@ -559,7 +561,7 @@ End with:
 ```markdown
 ## 协作 · Collaboration
 
-欢迎围绕安全工具、威胁检测、应急响应与 AI 安全自动化交流协作。  
+欢迎围绕安全工具、威胁检测、应急响应与 AI 安全自动化交流协作。
 Open to collaboration on practical security tooling, detection engineering, incident response, and AI-assisted security workflows.
 
 [查看全部公开项目](https://github.com/chu0119?tab=repositories) · [Follow @chu0119](https://github.com/chu0119)

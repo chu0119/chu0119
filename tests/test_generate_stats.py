@@ -1,40 +1,49 @@
+import io
+import json
 import os
 import sys
 from unittest.mock import patch
 
 import defusedxml.ElementTree as ET
+import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 from generate_stats import (  # noqa: E402
     fetch_stats,
+    gql,
+    main,
     normalize_stats,
     svg_achievements,
     svg_langs,
     svg_stats,
 )
 
-STATS = {"repos": 66, "stars": 72, "prs": 3, "issues": 5,
-         "contributions": 1234, "top_langs": [("Python", 10)]}
-STREAK = {"current": 2, "longest": 5, "total": 548}
+STATS = {
+    "repos": 66,
+    "source_repos": 52,
+    "active_repos": 49,
+    "stars": 72,
+    "forks": 18,
+    "languages": 7,
+    "top_langs": [("Python", 10)],
+}
 
 
-def test_fetch_stats_queries_public_repositories_only():
+def test_fetch_stats_uses_only_explicitly_public_repository_connections():
     payload = {
         "user": {
             "publicRepositories": {"totalCount": 69},
-            "sourceRepositories": {"nodes": []},
-            "pullRequests": {"totalCount": 0},
-            "issues": {"totalCount": 0},
-            "contributionsCollection": {
-                "contributionCalendar": {"totalContributions": 0}
-            },
+            "sourceRepositories": {"totalCount": 0, "nodes": []},
         }
     }
     with patch("generate_stats.gql", return_value=payload) as mocked:
         result = fetch_stats()
     query = mocked.call_args.args[0]
-    assert "privacy: PUBLIC" in query
+    assert query.count("privacy: PUBLIC") == 2
+    assert "pullRequests" not in query
+    assert "issues" not in query
+    assert "contributionsCollection" not in query
     assert result["repos"] == 69
 
 
@@ -42,61 +51,89 @@ def test_normalize_stats_ignores_null_nodes_and_missing_languages():
     user = {
         "publicRepositories": {"totalCount": 2},
         "sourceRepositories": {
-            "nodes": [None, {"stargazerCount": 7, "primaryLanguage": None}]
-        },
-        "pullRequests": {"totalCount": 1},
-        "issues": {"totalCount": 2},
-        "contributionsCollection": {
-            "contributionCalendar": {"totalContributions": 3}
+            "totalCount": 2,
+            "nodes": [
+                None,
+                {
+                    "stargazerCount": 7,
+                    "forkCount": 3,
+                    "isArchived": False,
+                    "primaryLanguage": None,
+                },
+            ],
         },
     }
     result = normalize_stats(user)
     assert result == {
         "repos": 2,
+        "source_repos": 2,
+        "active_repos": 1,
         "stars": 7,
-        "prs": 1,
-        "issues": 2,
-        "contributions": 3,
+        "forks": 3,
+        "languages": 0,
         "top_langs": [],
     }
 
 
+def test_gql_rejects_partial_responses_with_errors():
+    response = io.BytesIO(json.dumps({
+        "data": {"user": {"sourceRepositories": {"nodes": [None]}}},
+        "errors": [{"message": "repository data could not be resolved"}],
+    }).encode())
+    with patch("generate_stats.urllib.request.urlopen", return_value=response):
+        with pytest.raises(RuntimeError, match="GraphQL request failed"):
+            gql("query { viewer { login } }")
+
+
+def test_main_preserves_existing_assets_on_partial_graphql_error(tmp_path):
+    filenames = ("stats.svg", "langs.svg", "achievements.svg")
+    for filename in filenames:
+        (tmp_path / filename).write_text(f"existing:{filename}", encoding="utf-8")
+
+    response = io.BytesIO(json.dumps({
+        "data": {"user": {"sourceRepositories": {"nodes": [None]}}},
+        "errors": [{"message": "partial response"}],
+    }).encode())
+    with patch("generate_stats.OUT_DIR", str(tmp_path)), patch(
+        "generate_stats.urllib.request.urlopen", return_value=response
+    ):
+        with pytest.raises(RuntimeError, match="GraphQL request failed"):
+            main()
+
+    for filename in filenames:
+        assert (tmp_path / filename).read_text(encoding="utf-8") == f"existing:{filename}"
+
+
 def test_output_is_valid_xml():
-    ET.fromstring(svg_achievements(STATS, STREAK))
+    ET.fromstring(svg_achievements(STATS))
 
 
 def test_renders_all_four_tiles():
-    s = svg_achievements(STATS, STREAK)
+    s = svg_achievements(STATS)
     assert s.count('rx="8"') == 4
 
 
 def test_embeds_real_values():
-    s = svg_achievements(STATS, STREAK)
+    s = svg_achievements(STATS)
     assert ">72</text>" in s
     assert ">66</text>" in s
-    assert "1,234" in s          # thousands separator kicks in >= 1000
-    assert "LONGEST 5" in s
+    assert ">18</text>" in s
+    assert ">7</text>" in s
     assert "TOTAL STARS" in s
-    assert "CONTRIBUTIONS" in s
-    assert s.count("#27C93F") == 3
+    assert "TOTAL FORKS" in s
+    assert "LANGUAGES" in s
     assert "#10B981" not in s
 
 
 def test_ascii_only_vector_icons():
-    s = svg_achievements(STATS, STREAK)
+    s = svg_achievements(STATS)
     assert s.isascii()
-
-
-def test_small_numbers_have_no_separator():
-    s = svg_achievements({**STATS, "contributions": 999}, STREAK)
-    assert ">999</text>" in s
-    assert "1,234" not in s
 
 
 def test_all_generated_svgs_are_valid_xml():
     for renderer in (
-        lambda: svg_achievements(STATS, STREAK),
-        lambda: svg_stats(STATS, STREAK),
+        lambda: svg_achievements(STATS),
+        lambda: svg_stats(STATS),
         lambda: svg_langs(STATS),
     ):
         ET.fromstring(renderer())
@@ -104,8 +141,8 @@ def test_all_generated_svgs_are_valid_xml():
 
 def test_cyber_lab_palette_and_bilingual_labels():
     combined = "".join((
-        svg_achievements(STATS, STREAK),
-        svg_stats(STATS, STREAK),
+        svg_achievements(STATS),
+        svg_stats(STATS),
         svg_langs(STATS),
     ))
     assert "#07101C" in combined

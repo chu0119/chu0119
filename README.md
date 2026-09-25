@@ -146,7 +146,7 @@
 ## 开源数据 · Open Source Signal
 
 <p align="center">
-  <img src="assets/achievements.svg" alt="开源仓库、Star、贡献与连续活跃数据" width="720" />
+  <img src="assets/achievements.svg" alt="公开仓库、Star、Fork 与主要语言数据" width="720" />
 </p>
 <p align="center">
   <img src="assets/stats.svg" alt="工程协作与项目数据" width="720" />
@@ -155,7 +155,7 @@
   <img src="assets/langs.svg" alt="主要编程语言分布" width="720" />
 </p>
 
-<sub>Metrics are generated daily from the GitHub API and stored in this repository. No third-party stats image service is used.</sub>
+<sub>Metrics are generated daily from explicitly public repositories through the GitHub API and stored here. No private activity or third-party stats image service is used.</sub>
 
 ## 最近动态 · Recent Activity
 

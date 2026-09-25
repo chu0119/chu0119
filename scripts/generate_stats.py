@@ -5,7 +5,6 @@ import math
 import os
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone, timedelta
 from xml.sax.saxutils import escape
 
 USER = "chu0119"
@@ -46,17 +45,22 @@ def gql(query, variables=None):
     if TOKEN:
         req.add_header("Authorization", f"Bearer {TOKEN}")
     with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)["data"]
+        payload = json.load(r)
+    errors = payload.get("errors") or []
+    if errors:
+        # Error details can contain private resource names when a broad token is
+        # used, so publish only the count in workflow logs.
+        raise RuntimeError(f"GraphQL request failed with {len(errors)} error(s)")
+    data = payload.get("data")
+    if not isinstance(data, dict):
+        raise RuntimeError("GraphQL request returned no data")
+    return data
 
 
 def normalize_stats(user):
     """Normalize the public profile data used by the SVG renderers."""
     public_repositories = user.get("publicRepositories") or {}
     source_repositories = user.get("sourceRepositories") or {}
-    pull_requests = user.get("pullRequests") or {}
-    issues = user.get("issues") or {}
-    contributions = user.get("contributionsCollection") or {}
-    calendar = contributions.get("contributionCalendar") or {}
     nodes = source_repositories.get("nodes") or []
     repos = [repo for repo in nodes if repo]
 
@@ -69,10 +73,11 @@ def normalize_stats(user):
 
     return {
         "repos": public_repositories.get("totalCount", 0) or 0,
+        "source_repos": source_repositories.get("totalCount", 0) or 0,
+        "active_repos": sum(not repo.get("isArchived", False) for repo in repos),
         "stars": sum(repo.get("stargazerCount", 0) or 0 for repo in repos),
-        "prs": pull_requests.get("totalCount", 0) or 0,
-        "issues": issues.get("totalCount", 0) or 0,
-        "contributions": calendar.get("totalContributions", 0) or 0,
+        "forks": sum(repo.get("forkCount", 0) or 0 for repo in repos),
+        "languages": len(lang_counts),
         "top_langs": sorted(
             lang_counts.items(), key=lambda item: (-item[1], item[0])
         )[:8],
@@ -98,12 +103,13 @@ def fetch_stats():
           isFork: false,
           first: 100
         ) {
-          nodes { stargazerCount primaryLanguage { name color } }
-        }
-        pullRequests(first: 1) { totalCount }
-        issues(first: 1) { totalCount }
-        contributionsCollection {
-          contributionCalendar { totalContributions }
+          totalCount
+          nodes {
+            stargazerCount
+            forkCount
+            isArchived
+            primaryLanguage { name color }
+          }
         }
       }
     }
@@ -111,62 +117,12 @@ def fetch_stats():
     return normalize_stats(gql(q, {"login": USER})["user"])
 
 
-def fetch_streak():
-    """Calculate current and longest commit streak."""
-    q = '''
-    query($login: String!) {
-      user(login: $login) {
-        contributionsCollection {
-          contributionCalendar {
-            weeks {
-              contributionDays { date contributionCount }
-            }
-          }
-        }
-      }
-    }
-    '''
-    data = gql(q, {"login": USER})["user"]
-    days = []
-    for w in data["contributionsCollection"]["contributionCalendar"]["weeks"]:
-        for d in w["contributionDays"]:
-            days.append((d["date"], d["contributionCount"]))
-
-    # Calculate streaks (from today backwards)
-    current_streak = 0
-    longest_streak = 0
-    streak = 0
-    streak_start = None
-    current_start = None
-    found_current = False
-
-    for date_str, count in reversed(days):
-        if count > 0:
-            streak += 1
-            if not found_current:
-                current_streak = streak
-                current_start = date_str
-            if streak > longest_streak:
-                longest_streak = streak
-                streak_start = date_str
-        else:
-            if not found_current and current_streak > 0:
-                found_current = True
-            streak = 0
-
-    return {
-        "current": current_streak,
-        "longest": longest_streak,
-        "total": sum(c for _, c in days),
-    }
-
-
-def svg_stats(stats, streak_data):
+def svg_stats(stats):
     """Render a compact engineering-signal panel."""
     metrics = [
-        ("PULL REQUESTS", stats.get("prs", 0)),
-        ("ISSUES", stats.get("issues", 0)),
-        ("LONGEST STREAK", f"{streak_data.get('longest', 0)} DAYS"),
+        ("ORIGINAL REPOS", stats.get("source_repos", 0)),
+        ("ACTIVE REPOS", stats.get("active_repos", 0)),
+        ("LANGUAGES", stats.get("languages", 0)),
         ("FEATURED PROJECTS", 6),
     ]
     metric_svg = []
@@ -269,11 +225,12 @@ def _achievement_icon(kind, cx, cy):
                 f'fill="none" stroke="{CYAN}" stroke-width="1.5"/>\n'
                 f'  <line x1="{cx-6}" y1="{cy-2}" x2="{cx+6}" y2="{cy-2}" '
                 f'stroke="{CYAN}" stroke-width="1.5"/>\n')
-    if kind == "streak":
-        pts = (f"{cx+2},{cy-8} {cx-4},{cy+1} {cx-0.5},{cy+1} "
-               f"{cx-2},{cy+8} {cx+4},{cy-1} {cx+0.5},{cy-1}")
-        return f'  <polygon points="{pts}" fill="{MAGENTA}"/>\n'
-    # contrib: mini ascending bar chart
+    if kind == "forks":
+        return (f'  <path d="M{cx-5} {cy-6} V{cy+1} Q{cx-5} {cy+6} {cx} {cy+6} '
+                f'H{cx+5} V{cy-1}" fill="none" stroke="{MAGENTA}" stroke-width="1.5"/>\n'
+                f'  <circle cx="{cx-5}" cy="{cy-7}" r="2.5" fill="{MAGENTA}"/>\n'
+                f'  <circle cx="{cx+5}" cy="{cy-3}" r="2.5" fill="{MAGENTA}"/>\n')
+    # languages: mini ascending bar chart
     bars = ""
     for i, h in enumerate((6, 10, 14)):
         bx = cx - 7 + i * 6
@@ -281,16 +238,13 @@ def _achievement_icon(kind, cx, cy):
     return bars
 
 
-def svg_achievements(stats, streak_data):
+def svg_achievements(stats):
     """Render the primary open-source signal panel using vector icons."""
-    def fmt(n):
-        return f"{n:,}" if n >= 1000 else str(n)
-
     tiles = [
         ("repos", str(stats.get("repos", 0)), "PUBLIC REPOS"),
         ("stars", str(stats.get("stars", 0)), "TOTAL STARS"),
-        ("contrib", fmt(stats.get("contributions", 0)), "CONTRIBUTIONS"),
-        ("streak", f"{streak_data.get('current', 0)} DAYS", f"LONGEST {streak_data.get('longest', 0)}"),
+        ("forks", str(stats.get("forks", 0)), "TOTAL FORKS"),
+        ("languages", str(stats.get("languages", 0)), "LANGUAGES"),
     ]
 
     W, H = 720, 176
@@ -307,7 +261,7 @@ def svg_achievements(stats, streak_data):
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">
   <title id="title">Open Source Signal</title>
-  <desc id="desc">Public repositories, earned stars, contributions, and current activity streak</desc>
+  <desc id="desc">Public repositories, earned stars, forks, and primary languages</desc>
   <defs>
     <linearGradient id="agrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="{CYAN}"/>
@@ -325,14 +279,16 @@ def svg_achievements(stats, streak_data):
 def main():
     print(f"Fetching data for {USER}...")
     stats = fetch_stats()
-    streak_data = fetch_streak()
-    print(f"  repos={stats['repos']} stars={stats['stars']} prs={stats['prs']} issues={stats['issues']}")
-    print(f"  contributions={stats['contributions']} streak_current={streak_data['current']} streak_longest={streak_data['longest']}")
+    print(
+        f"  public_repos={stats['repos']} source_repos={stats['source_repos']} "
+        f"active_repos={stats['active_repos']} stars={stats['stars']} "
+        f"forks={stats['forks']} languages={stats['languages']}"
+    )
 
     outputs = {
-        "stats.svg": svg_stats(stats, streak_data),
+        "stats.svg": svg_stats(stats),
         "langs.svg": svg_langs(stats),
-        "achievements.svg": svg_achievements(stats, streak_data),
+        "achievements.svg": svg_achievements(stats),
     }
     for filename, content in outputs.items():
         try:
@@ -340,7 +296,6 @@ def main():
         except ET.ParseError as exc:
             raise ValueError(f"Generated invalid SVG: {filename}") from exc
 
-    outputs["streak.json"] = json.dumps(streak_data, indent=2) + "\n"
     os.makedirs(OUT_DIR, exist_ok=True)
     for filename, content in outputs.items():
         path = os.path.join(OUT_DIR, filename)

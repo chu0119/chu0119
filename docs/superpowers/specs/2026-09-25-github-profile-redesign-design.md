@@ -1,7 +1,7 @@
 # GitHub Profile Redesign — Design Specification
 
-**Date:** 2026-09-25  
-**Profile:** `github.com/chu0119`  
+**Date:** 2026-09-25
+**Profile:** `github.com/chu0119`
 **Public identity:** 星川 / xingchuan
 
 ## 1. Goal
@@ -106,7 +106,7 @@ No employer, school, or private operational details are included.
 
 ### 4.6 Open-source signal
 
-Retain auto-generated public metrics and recent activity, but keep them secondary to project outcomes. The profile should show repositories, earned stars, contributions, and recent public activity without feeling like a scoreboard.
+Retain auto-generated public metrics and recent activity, but keep them secondary to project outcomes. The profile should show repository-backed metrics such as public repositories, earned stars, forks, languages, and recent public activity without feeling like a scoreboard. User-wide contribution, pull-request, issue, and streak totals are excluded because a broad workflow token could mix private activity into those values.
 
 ### 4.7 Footer
 
@@ -124,7 +124,7 @@ The implementation stays inside the existing profile repository and uses GitHub-
 - `README.md`: content hierarchy, project cards, capability matrix, activity block, and footer;
 - `assets/banner.svg`: bilingual identity and value proposition;
 - `assets/achievements.svg`: restrained open-source signal summary;
-- `assets/stats.svg`: public repository and contribution metrics;
+- `assets/stats.svg`: metrics derived only from explicitly public repository connections;
 - `assets/langs.svg`: language distribution presented as supporting context;
 - `scripts/generate_stats.py`: GitHub API data collection and SVG generation;
 - `scripts/update_activity.py`: public activity block updates;

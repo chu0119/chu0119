@@ -15,14 +15,14 @@
   <text x="702" y="31" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7691A5">公开仓库由 GitHub API 每日更新</text>
 
   <rect x="18" y="66" width="162" height="66" rx="10" fill="#0C1D2C" stroke="#59E7D1" stroke-opacity="0.28"/>
-  <text x="32" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">PULL REQUESTS</text>
-  <text x="32" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">21</text>
+  <text x="32" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">ORIGINAL REPOS</text>
+  <text x="32" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">26</text>
   <rect x="192" y="66" width="162" height="66" rx="10" fill="#0C1D2C" stroke="#E85B9C" stroke-opacity="0.28"/>
-  <text x="206" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">ISSUES</text>
-  <text x="206" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">64</text>
+  <text x="206" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">ACTIVE REPOS</text>
+  <text x="206" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">26</text>
   <rect x="366" y="66" width="162" height="66" rx="10" fill="#0C1D2C" stroke="#59E7D1" stroke-opacity="0.28"/>
-  <text x="380" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">LONGEST STREAK</text>
-  <text x="380" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">5 DAYS</text>
+  <text x="380" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">LANGUAGES</text>
+  <text x="380" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">7</text>
   <rect x="540" y="66" width="162" height="66" rx="10" fill="#0C1D2C" stroke="#E85B9C" stroke-opacity="0.28"/>
   <text x="554" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">FEATURED PROJECTS</text>
   <text x="554" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#EAF3F8">6</text>

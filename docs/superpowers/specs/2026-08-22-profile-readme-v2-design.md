@@ -12,7 +12,7 @@
 | 方案 | A:自绘管线扩展,零外部服务依赖 |
 | 语言 | 中英双语(英文为主、中文对照) |
 | 新增板块 | 项目卡片升级 / 成就连击区 / 研究焦点区 / 联系方式区(全选) |
-| 联系邮箱 | chu0119@foxmail.com |
+| 联系方式 | GitHub 主页内协作（隐私更新后移除公开邮箱） |
 
 ## 布局(自上而下)
 
@@ -24,7 +24,7 @@
 6. **数据面板** — 保留现有 `assets/stats.svg`、`assets/langs.svg`
 7. **成就面板**(新增)— `assets/achievements.svg`:终端风 "ACHIEVEMENTS UNLOCKED" 徽章网格,含总星数/仓库数/连击(current+longest)/年度贡献数;由 `generate_stats.py` 用已有 GraphQL 数据自绘,零外部依赖
 8. **实时动态** — 保留 `<!-- BEGIN ACTIVITY -->` 自动更新块
-9. **联系区** `$ ping me`(新增)— mailto 邮箱 badge + GitHub badge
+9. **联系区** `$ ping me`(新增)— GitHub badge（后续隐私更新移除公开邮箱）
 10. **访客计数器** — 保留页脚 Komarev 计数
 
 ## 视觉规范

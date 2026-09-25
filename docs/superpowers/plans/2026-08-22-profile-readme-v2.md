@@ -16,7 +16,7 @@
 - Animations only inside SVG files (SMIL `<animate>`); GitHub README forbids CSS animation.
 - New sections add NO new external services (shields.io badges already in use are allowed).
 - Copy: English primary with Chinese counterpart lines (双语).
-- Contact email: `chu0119@foxmail.com`.
+- Contact route: GitHub profile only; the later privacy refresh removes public email addresses.
 - Achievement panel uses self-drawn vector icons, NOT emoji (viewer-font risk noted in spec).
 - Do NOT modify `scripts/update_activity.py`, `.github/workflows/update-activity.yml`, `.github/workflows/generate-stats.yml` (its `paths: ['scripts/generate_stats.py']` trigger already covers our change).
 - Preserve exactly: `<!-- BEGIN ACTIVITY -->` / `<!-- END ACTIVITY -->` markers in README.
@@ -475,7 +475,6 @@ $ ping me
 ## 📮 Contact · 联系我
 
 <p align="left">
-  <a href="mailto:chu0119@foxmail.com"><img src="https://img.shields.io/badge/Email-chu0119%40foxmail.com-00E5FF?style=flat-square&logo=minutemailer&logoColor=white" alt="email"/></a>&nbsp;&nbsp;
   <a href="https://github.com/chu0119"><img src="https://img.shields.io/badge/GitHub-chu0119-181717?style=flat-square&logo=github" alt="github"/></a>
 </p>
 
@@ -491,10 +490,10 @@ $ exit
 - [ ] **Step 2: Markdown render smoke-check**
 
 ```bash
-cd /d/xiangmu/chu0119/profile-repo && gh api markdown -f text="$(cat README.md)" > /tmp/render.html && grep -c "assets/achievements.svg\|assets/banner.svg\|mailto:chu0119@foxmail.com" /tmp/render.html && grep -c "<table" /tmp/render.html
+cd /d/xiangmu/chu0119/profile-repo && gh api markdown -f text="$(cat README.md)" > /tmp/render.html && grep -c "assets/achievements.svg\|assets/banner.svg" /tmp/render.html && grep -c "<table" /tmp/render.html
 ```
 
-Expected: first count ≥ 3 (banner + achievements + mailto links present), second ≥ 1 (arsenal table rendered). If `$(cat ...)` chokes on CRLF, run `dos2unix README.md` equivalent via `sed -i 's/\r$//' README.md` first — but prefer NOT to mutate line endings; instead fall back to:
+Expected: first count ≥ 2 (banner + achievements present), second ≥ 1 (arsenal table rendered). If `$(cat ...)` chokes on CRLF, run `dos2unix README.md` equivalent via `sed -i 's/\r$//' README.md` first — but prefer NOT to mutate line endings; instead fall back to:
 
 ```bash
 gh api markdown -F text=@README.md > /tmp/render.html
