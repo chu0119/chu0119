@@ -1,2 +1,4 @@
 .agentic-security/
 __pycache__/
+.worktrees/
+.superpowers/
