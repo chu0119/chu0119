@@ -1,175 +1,173 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="terminal banner" width="720"/>
+  <img src="assets/banner.svg" alt="星川 xingchuan — Security Engineering" width="960" />
 </p>
 
-```text
-$ cat identity.txt
-```
+<h1 align="center">星川 / xingchuan</h1>
+<p align="center"><strong>Security Researcher & Tool Builder</strong></p>
+<p align="center">
+  把安全信号转化为可执行的检测、响应与工程化工具。<br>
+  <sub>Turning security signals into practical detection, response, and engineering systems.</sub>
+</p>
 
-> **Security Researcher & Tool Builder** — focused on offensive security,
-> threat intelligence, and AI-powered automation.
-> Building tools that make recon faster and reporting painless.
->
-> **安全研究员 & 工具建造者** —— 专注攻防渗透、威胁情报与 AI 自动化，
-> 让信息收集更快、报告输出更省心。
+<p align="center">
+  <code>Offensive Security</code>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <code>Threat Detection</code>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <code>Incident Response</code>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <code>AI Automation</code>
+</p>
 
-```text
-$ cat focus.txt
-```
-
-> 🎯 **Bug Hunting** — EDUSRC & enterprise SRC · 教育 SRC 与企业 SRC 漏洞挖掘中
->
-> 🛠 **Tool Building** — recon & automation tooling · 持续打磨侦察与自动化工具链
->
-> 🤖 **AI × Security** — LLM-driven security workflows · 探索大模型驱动的安全工作流
-
-```text
-$ ls ~/arsenal --sort=stars
-```
-
-## 🔫 Featured Arsenal · 精选武器库
+## 研究方向 · Focus
 
 <table>
 <tr>
-<td width="50%">
+<td width="33%" valign="top">
 
-[🔧 **fscan-toolkit**](https://github.com/chu0119/fscan-toolkit)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/fscan-toolkit?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/fscan-toolkit)&nbsp;
-![HTML](https://img.shields.io/badge/HTML-E34C26?style=flat-square&logo=html5&logoColor=white)
+**01 // 攻防与漏洞研究**<br>
+<sub>Offensive Security &amp; Vulnerability Research</sub>
 
-*GUI suite for fscan — command builder + report parser, zero-dependency.*
-
-fscan 图形化套件：命令生成器 + 报告解析器。
+面向授权场景的漏洞发现、验证与治理。
 
 </td>
-<td width="50%">
+<td width="33%" valign="top">
 
-[🛡 **zhidun**](https://github.com/chu0119/zhidun)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/zhidun?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/zhidun)&nbsp;
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+**02 // 检测、研判与响应**<br>
+<sub>Detection, Threat Intelligence &amp; IR</sub>
 
-*AI-driven web log security analyzer — cyberpunk-themed threat hunting.*
-
-星川智盾：AI 驱动的网站日志安全分析系统。
+从日志与流量中提取线索，形成可解释的安全结论。
 
 </td>
-</tr>
-<tr>
-<td width="50%">
+<td width="33%" valign="top">
 
-[🌲 **DarkForest-Hunter**](https://github.com/chu0119/DarkForest-Hunter)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/DarkForest-Hunter?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/DarkForest-Hunter)&nbsp;
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+**03 // AI 安全自动化**<br>
+<sub>AI-powered Security Tooling</sub>
 
-*DeepSeek API-key security scanner — 14 sources, 238 queries.*
-
-黑暗森林猎人：DeepSeek API 密钥泄露扫描器。
-
-</td>
-<td width="50%">
-
-[🛰 **xingchuan-ti**](https://github.com/chu0119/xingchuan-ti)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/xingchuan-ti?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/xingchuan-ti)&nbsp;
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-
-*Threat-intel assistant — select IP/domain, multi-source weighted verdict.*
-
-星川威胁情报助手：划词识别，多源加权研判。
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-[📡 **tg-monitor-v2**](https://github.com/chu0119/tg-monitor-v2)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/tg-monitor-v2?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/tg-monitor-v2)&nbsp;
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-
-*Telegram group monitoring — keyword alerts, analytics & dashboard.*
-
-听风追影：TG 群组实时监控告警与可视化大屏。
-
-</td>
-<td width="50%">
-
-[🎯 **edusrc-hunter**](https://github.com/chu0119/edusrc-hunter)&nbsp;
-[![stars](https://img.shields.io/github/stars/chu0119/edusrc-hunter?style=flat-square&color=00E5FF&label=%E2%AD%90)](https://github.com/chu0119/edusrc-hunter)&nbsp;
-![Shell](https://img.shields.io/badge/Shell-89E051?style=flat-square&logo=gnu-bash&logoColor=black)
-
-*EDUSRC hunting skill — Burp-MCP driven recon → scan → report.*
-
-教育 SRC 漏洞挖掘技能：Burp MCP 全流程驱动。
+用智能工作流缩短侦察、分析、处置与报告链路。
 
 </td>
 </tr>
 </table>
 
-```text
-$ sudo ./load_modules.sh
-```
+## 代表项目 · Selected Work
 
-## 🛠 Tech Stack · 技术栈
+<table>
+<tr>
+<td width="50%" valign="top">
 
-**Languages**
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
+### [fscan-toolkit](https://github.com/chu0119/fscan-toolkit)
 
-**Security**
-![Burp Suite](https://img.shields.io/badge/Burp_Suite-FF6633?style=flat-square&logo=burpsuite&logoColor=white)
-![fscan](https://img.shields.io/badge/fscan-inner--network--scan-00E5FF?style=flat-square)
-![Nmap](https://img.shields.io/badge/Nmap-204E77?style=flat-square&logo=nmap&logoColor=white)
-![SRC](https://img.shields.io/badge/EDUSRC-vuln--hunting-FF2E97?style=flat-square)
+<code>HTML</code> · Security Workflow UX
 
-**AI & Automation**
-![LLM Agent](https://img.shields.io/badge/LLM_Agents-auto--pwn-8B5CF6?style=flat-square)
-![MCP](https://img.shields.io/badge/MCP-toolchain-10B981?style=flat-square)
-![Claude](https://img.shields.io/badge/Claude_Code-paired-191919?style=flat-square&logo=anthropic)
+把内网评估命令与结果整理成清晰、可复用的工作流。<br>
+<sub>Usable command building and report parsing for practical assessment.</sub>
 
-```text
-$ ./monitor --live
-```
+</td>
+<td width="50%" valign="top">
 
-## 📊 Stats & Achievements · 数据与成就
+### [zhidun](https://github.com/chu0119/zhidun)
 
-> Stats & achievements auto-generated daily by GitHub Actions — zero external service dependency
+<code>TypeScript</code> · AI Threat Analysis
+
+将原始 Web 日志转化为可解释的威胁研判结果。<br>
+<sub>AI-assisted web-log analysis from raw events to security verdicts.</sub>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### [DarkForest-Hunter](https://github.com/chu0119/DarkForest-Hunter)
+
+<code>Python</code> · Exposure Defense
+
+面向公开泄露风险的发现、只读验证与持续监控。<br>
+<sub>Defensive exposure discovery and validation across AI platforms.</sub>
+
+</td>
+<td width="50%" valign="top">
+
+### [log-audit](https://github.com/chu0119/log-audit)
+
+<code>Python</code> · Detection Engineering
+
+用规则、威胁情报和攻击链视角完成结构化日志研判。<br>
+<sub>ATT&amp;CK-aware detection, investigation, and reporting workflows.</sub>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### [xingchuan-ti](https://github.com/chu0119/xingchuan-ti)
+
+<code>TypeScript</code> · Threat Intelligence
+
+聚合多源情报，对 IP 与域名形成加权研判。<br>
+<sub>Multi-source threat intelligence with fast, explainable verdicts.</sub>
+
+</td>
+<td width="50%" valign="top">
+
+### [AegisIR](https://github.com/chu0119/AegisIR)
+
+<code>Python</code> · Incident Response
+
+为失陷主机提供快速网络隔离与生效验证。<br>
+<sub>Fast network isolation and verification for incident response.</sub>
+
+</td>
+</tr>
+</table>
+
+## 能力矩阵 · Capabilities
+
+<table>
+<tr>
+<th width="25%">Security Engineering</th>
+<th width="25%">Detection &amp; Response</th>
+<th width="25%">Development</th>
+<th width="25%">Platforms</th>
+</tr>
+<tr>
+<td valign="top">漏洞评估<br>授权测试<br>漏洞治理</td>
+<td valign="top">日志与流量分析<br>威胁情报<br>应急响应</td>
+<td valign="top">Python<br>TypeScript<br>LLM Agent</td>
+<td valign="top">Linux · Docker<br>MySQL · Redis<br>Security Toolchains</td>
+</tr>
+</table>
+
+## 经历与认可 · Experience & Recognition
+
+| | |
+| --- | --- |
+| **2023 — Now** | **Security Engineering Practice** — 安全运营、漏洞治理、日志分析与自动化工具开发。 |
+| **Recognition** | **National & Provincial** — 企业信息安全、信息安全管理评估与 AI 信息素养相关赛事经历。 |
+| **Principle** | **Build for real workflows** — 持续把侦察、检测、响应和报告沉淀为可复用工具链。 |
+
+## 开源数据 · Open Source Signal
 
 <p align="center">
-  <img src="assets/achievements.svg" alt="achievements"/>
+  <img src="assets/achievements.svg" alt="开源仓库、Star、贡献与连续活跃数据" width="720" />
 </p>
 <p align="center">
-  <img src="assets/stats.svg" alt="stats"/>
+  <img src="assets/stats.svg" alt="工程协作与项目数据" width="720" />
 </p>
 <p align="center">
-  <img src="assets/langs.svg" alt="langs"/>
+  <img src="assets/langs.svg" alt="主要编程语言分布" width="720" />
 </p>
 
-## 📡 Recent Activity · 最近动态
+<sub>Metrics are generated daily from the GitHub API and stored in this repository. No third-party stats image service is used.</sub>
+
+## 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- 🚀 **DarkForest-Hunter** — pushed to it
-- ⭐ **Tencent/AI-Infra-Guard** — starred it
-- ⭐ **zhaoxuya520/reverse-skill** — starred it
-- 📦 **sqlmap-toolkit** — released it
+- 🔬 Building in public · 持续构建中
 <!-- END ACTIVITY -->
 
-```text
-$ ping me
-```
+## 协作 · Collaboration
 
-## 📮 Contact · 联系我
+欢迎围绕安全工具、威胁检测、应急响应与 AI 安全自动化交流协作。<br>
+Open to collaboration on practical security tooling, detection engineering, incident response, and AI-assisted security workflows.
 
-<p align="left">
-  <a href="mailto:chu0119@foxmail.com"><img src="https://img.shields.io/badge/Email-chu0119%40foxmail.com-00E5FF?style=flat-square&logo=minutemailer&logoColor=white" alt="email"/></a>&nbsp;&nbsp;
-  <a href="https://github.com/chu0119"><img src="https://img.shields.io/badge/GitHub-chu0119-181717?style=flat-square&logo=github" alt="github"/></a>
-</p>
+[查看全部公开项目](https://github.com/chu0119?tab=repositories) · [Follow @chu0119](https://github.com/chu0119)
 
-```text
-$ exit
-```
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=chu0119&style=for-the-badge&color=00E5FF" alt="visitors"/>
-</p>
+> All security research and tooling is intended for authorized testing, defensive research, and education.
