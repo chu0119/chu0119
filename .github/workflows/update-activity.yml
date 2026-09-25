@@ -14,11 +14,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check pytest defusedxml
+
+      - name: Validate activity updater
+        run: python -m pytest tests/test_update_activity.py tests/test_profile_content.py -q
+
       - name: Fetch recent activity
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/update_activity.py
+
+      - name: Validate updated profile
+        run: python -m pytest tests/test_profile_content.py -q
 
       - name: Commit if changed
         run: |

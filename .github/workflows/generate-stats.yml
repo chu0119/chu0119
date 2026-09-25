@@ -21,6 +21,12 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check pytest defusedxml
+
+      - name: Validate profile generators
+        run: python -m pytest tests/test_generate_stats.py -q
+
       - name: Generate stats SVGs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
