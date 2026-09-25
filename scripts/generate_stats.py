@@ -4,11 +4,26 @@ import json
 import math
 import os
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
+from xml.sax.saxutils import escape
 
 USER = "chu0119"
 TOKEN = os.environ.get("GH_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
 OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+
+BG = "#07101C"
+PANEL = "#0C1D2C"
+CYAN = "#59E7D1"
+BLUE = "#66DDFF"
+MAGENTA = "#E85B9C"
+TEXT = "#EAF3F8"
+MUTED = "#7691A5"
+
+
+def svg_text(value):
+    """Escape dynamic values before inserting them into SVG markup."""
+    return escape(str(value), {'"': "&quot;", "'": "&apos;"})
 
 
 def api(url):
@@ -147,51 +162,44 @@ def fetch_streak():
 
 
 def svg_stats(stats, streak_data):
-    """Generate the main stats card SVG."""
-    items = [
-        ("📦 Repositories", str(stats["repos"])),
-        ("⭐ Total Stars", str(stats["stars"])),
-        ("🔀 Pull Requests", str(stats["prs"])),
-        ("🐛 Issues", str(stats["issues"])),
-        ("📊 Contributions", str(stats["contributions"])),
-        ("🔥 Current Streak", f"{streak_data['current']} days"),
-        ("🏆 Longest Streak", f"{streak_data['longest']} days"),
+    """Render a compact engineering-signal panel."""
+    metrics = [
+        ("PULL REQUESTS", stats.get("prs", 0)),
+        ("ISSUES", stats.get("issues", 0)),
+        ("LONGEST STREAK", f"{streak_data.get('longest', 0)} DAYS"),
+        ("FEATURED PROJECTS", 6),
     ]
+    metric_svg = []
+    for index, (label, value) in enumerate(metrics):
+        x = 18 + index * 174
+        accent = CYAN if index % 2 == 0 else MAGENTA
+        metric_svg.append(f'''
+  <rect x="{x}" y="66" width="162" height="66" rx="10" fill="{PANEL}" stroke="{accent}" stroke-opacity="0.28"/>
+  <text x="{x + 14}" y="91" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="{MUTED}">{svg_text(label)}</text>
+  <text x="{x + 14}" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="{TEXT}">{svg_text(value)}</text>''')
 
-    card_h = 50 + len(items) * 42 + 20
-    card_w = 480
-
-    rows = ""
-    for i, (label, value) in enumerate(items):
-        y = 50 + i * 42
-        fill = "#161b22" if i % 2 == 0 else "#0d1117"
-        rows += f'''
-  <rect x="0" y="{y}" width="{card_w}" height="42" fill="{fill}" rx="4"/>
-  <text x="16" y="{y+27}" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="14" fill="#8b949e">{label}</text>
-  <text x="{card_w-16}" y="{y+27}" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="14" fill="#c9d1d9" font-weight="600" text-anchor="end">{value}</text>'''
-
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{card_w}" height="{card_h}" viewBox="0 0 {card_w} {card_h}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="720" height="150" viewBox="0 0 720 150" role="img" aria-labelledby="title desc">
+  <title id="title">Engineering Signal</title>
+  <desc id="desc">Public GitHub collaboration metrics for xingchuan</desc>
   <defs>
-    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#FF2E97"/>
+    <linearGradient id="signalHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="{CYAN}"/>
+      <stop offset="65%" stop-color="{BLUE}"/>
+      <stop offset="100%" stop-color="{MAGENTA}"/>
     </linearGradient>
   </defs>
-  <rect width="{card_w}" height="{card_h}" fill="#0d1117" rx="12"/>
-  <rect width="{card_w}" height="44" rx="12" fill="url(#headerGrad)" opacity="0.15"/>
-  <text x="16" y="29" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#00E5FF">📊 GitHub Stats</text>
-{rows}
+  <rect width="720" height="150" rx="16" fill="{BG}"/>
+  <path d="M18 48 H702" stroke="#17364A"/>
+  <rect x="18" y="18" width="4" height="18" rx="2" fill="url(#signalHeader)"/>
+  <text x="34" y="31" font-family="Consolas,Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1.6" fill="{CYAN}">ENGINEERING SIGNAL / 工程数据</text>
+  <text x="702" y="31" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="{MUTED}">公开仓库由 GitHub API 每日更新</text>
+{''.join(metric_svg)}
 </svg>'''
-    return svg
 
 
 def svg_langs(stats):
-    """Generate the language breakdown SVG."""
-    langs = stats["top_langs"]
-    if not langs:
-        return "<svg xmlns='http://www.w3.org/2000/svg' width='400' height='120'><text x='16' y='60' fill='#8b949e'>No languages found</text></svg>"
-
-    total = sum(c for _, c in langs)
+    """Render public source-repository language distribution."""
+    langs = stats.get("top_langs") or []
     colors = {
         "Python": "#3572A5", "TypeScript": "#3178C6", "JavaScript": "#F7DF1E",
         "PHP": "#4F5D95", "HTML": "#E34C26", "CSS": "#563D7C", "Shell": "#89E051",
@@ -199,43 +207,48 @@ def svg_langs(stats):
         "Rust": "#DEA584", "Java": "#B07219", "Ruby": "#701516",
         "Elixir": "#6E4A7E", "Swift": "#F05138", "Kotlin": "#A97BFF",
     }
-    default_colors = ["#FF2E97", "#00E5FF", "#8B5CF6", "#10B981", "#F59E0B", "#EF4444", "#6366F1", "#EC4899"]
+    default_colors = [MAGENTA, CYAN, "#8B5CF6", "#27C93F", "#F59E0B"]
 
-    bar_segments = ""
-    x_offset = 16
-    bar_w = 400
-    for i, (name, count) in enumerate(langs):
-        w = max(4, count / total * bar_w)
-        color = colors.get(name, default_colors[i % len(default_colors)])
-        bar_segments += f'  <rect x="{x_offset}" y="50" width="{w}" height="8" fill="{color}" rx="2"/>\n'
-        x_offset += w
+    if not langs:
+        body = f'''
+  <rect x="18" y="62" width="684" height="58" rx="10" fill="{PANEL}" stroke="#17364A"/>
+  <text x="360" y="87" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="{TEXT}">暂无语言数据</text>
+  <text x="360" y="106" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.4" fill="{MUTED}">NO PUBLIC LANGUAGE DATA</text>'''
+    else:
+        total = sum(count for _, count in langs) or 1
+        x_offset = 18.0
+        bar_width = 684.0
+        segments = []
+        for index, (name, count) in enumerate(langs):
+            width = count / total * bar_width
+            color = colors.get(name, default_colors[index % len(default_colors)])
+            segments.append(
+                f'  <rect x="{x_offset:.2f}" y="58" width="{width:.2f}" '
+                f'height="10" fill="{color}" rx="3"/>'
+            )
+            x_offset += width
 
-    legend = ""
-    legend_x = 16
-    legend_y = 82
-    for i, (name, count) in enumerate(langs[:5]):
-        color = colors.get(name, default_colors[i % len(default_colors)])
-        pct = f"{count / total * 100:.1f}%"
-        legend += f'''  <circle cx="{legend_x}" cy="{legend_y}" r="4" fill="{color}"/>
-  <text x="{legend_x+8}" y="{legend_y+4}" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">{name} {pct}</text>\n'''
-        legend_x += len(name) * 7 + 50
-        if legend_x > 350:
-            legend_x = 16
-            legend_y += 22
+        legend = []
+        for index, (name, count) in enumerate(langs[:5]):
+            x = 18 + index * 137
+            color = colors.get(name, default_colors[index % len(default_colors)])
+            percentage = count / total * 100
+            legend.append(f'''
+  <circle cx="{x + 4}" cy="97" r="4" fill="{color}"/>
+  <text x="{x + 14}" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="{TEXT}">{svg_text(name)}</text>
+  <text x="{x + 14}" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="{MUTED}">{percentage:.1f}%</text>''')
+        body = "\n".join(segments + legend)
 
-    card_h = legend_y + 20
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="440" height="{card_h}" viewBox="0 0 440 {card_h}">
-  <defs>
-    <linearGradient id="headerGrad2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#FF2E97"/>
-    </linearGradient>
-  </defs>
-  <rect width="440" height="{card_h}" fill="#0d1117" rx="12"/>
-  <rect width="440" height="44" rx="12" fill="url(#headerGrad2)" opacity="0.15"/>
-  <text x="16" y="29" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#00E5FF">💻 Top Languages</text>
-{bar_segments}{legend}</svg>'''
-    return svg
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="720" height="140" viewBox="0 0 720 140" role="img" aria-labelledby="title desc">
+  <title id="title">Languages and Tooling</title>
+  <desc id="desc">Primary languages across public source repositories</desc>
+  <rect width="720" height="140" rx="16" fill="{BG}"/>
+  <rect x="18" y="18" width="4" height="18" rx="2" fill="{MAGENTA}"/>
+  <text x="34" y="31" font-family="Consolas,Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1.6" fill="{CYAN}">LANGUAGES / 主要语言</text>
+  <text x="702" y="31" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="{MUTED}">PUBLIC SOURCE REPOSITORIES</text>
+  <path d="M18 46 H702" stroke="#17364A"/>
+{body}
+</svg>'''
 
 
 def _star_points(cx, cy, r_out=7.0, r_in=2.9):
@@ -253,13 +266,13 @@ def _achievement_icon(kind, cx, cy):
         return f'  <polygon points="{_star_points(cx, cy)}" fill="#FFC94D"/>\n'
     if kind == "repos":
         return (f'  <rect x="{cx-6}" y="{cy-6}" width="12" height="12" rx="2" '
-                f'fill="none" stroke="#00E5FF" stroke-width="1.5"/>\n'
+                f'fill="none" stroke="{CYAN}" stroke-width="1.5"/>\n'
                 f'  <line x1="{cx-6}" y1="{cy-2}" x2="{cx+6}" y2="{cy-2}" '
-                f'stroke="#00E5FF" stroke-width="1.5"/>\n')
+                f'stroke="{CYAN}" stroke-width="1.5"/>\n')
     if kind == "streak":
         pts = (f"{cx+2},{cy-8} {cx-4},{cy+1} {cx-0.5},{cy+1} "
                f"{cx-2},{cy+8} {cx+4},{cy-1} {cx+0.5},{cy-1}")
-        return f'  <polygon points="{pts}" fill="#FF2E97"/>\n'
+        return f'  <polygon points="{pts}" fill="{MAGENTA}"/>\n'
     # contrib: mini ascending bar chart
     bars = ""
     for i, h in enumerate((6, 10, 14)):
@@ -269,73 +282,71 @@ def _achievement_icon(kind, cx, cy):
 
 
 def svg_achievements(stats, streak_data):
-    """Terminal-style 'ACHIEVEMENTS UNLOCKED' panel."""
+    """Render the primary open-source signal panel using vector icons."""
     def fmt(n):
         return f"{n:,}" if n >= 1000 else str(n)
 
     tiles = [
-        ("stars", str(stats["stars"]), "TOTAL STARS"),
-        ("repos", str(stats["repos"]), "REPOSITORIES"),
-        ("streak", f"{streak_data['current']} DAYS", f"LONGEST {streak_data['longest']}"),
-        ("contrib", fmt(stats["contributions"]), "CONTRIBUTIONS"),
+        ("repos", str(stats.get("repos", 0)), "PUBLIC REPOS"),
+        ("stars", str(stats.get("stars", 0)), "TOTAL STARS"),
+        ("contrib", fmt(stats.get("contributions", 0)), "CONTRIBUTIONS"),
+        ("streak", f"{streak_data.get('current', 0)} DAYS", f"LONGEST {streak_data.get('longest', 0)}"),
     ]
 
-    W, H = 720, 164
-    TILE_Y, TILE_W, TILE_H, GAP = 58, 163, 90, 12
+    W, H = 720, 176
+    TILE_Y, TILE_W, TILE_H, GAP = 66, 163, 92, 12
     tiles_svg = ""
     for i, (kind, value, label) in enumerate(tiles):
         tx = 16 + i * (TILE_W + GAP)
-        stroke = "#00E5FF" if i % 2 == 0 else "#FF2E97"
+        stroke = CYAN if i % 2 == 0 else MAGENTA
         cx = tx + TILE_W // 2
         tiles_svg += f'''  <rect x="{tx}" y="{TILE_Y}" width="{TILE_W}" height="{TILE_H}" rx="8" fill="#161b22" stroke="{stroke}" stroke-opacity="0.55"/>
-{_achievement_icon(kind, cx, TILE_Y + 24)}  <text x="{cx}" y="{TILE_Y + 56}" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#c9d1d9">{value}</text>
-  <text x="{cx}" y="{TILE_Y + 76}" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#8b949e">{label}</text>
+{_achievement_icon(kind, cx, TILE_Y + 24)}  <text x="{cx}" y="{TILE_Y + 59}" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="{TEXT}">{svg_text(value)}</text>
+  <text x="{cx}" y="{TILE_Y + 80}" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="{MUTED}">{svg_text(label)}</text>
 '''
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">
+  <title id="title">Open Source Signal</title>
+  <desc id="desc">Public repositories, earned stars, contributions, and current activity streak</desc>
   <defs>
     <linearGradient id="agrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#FF2E97"/>
+      <stop offset="0%" stop-color="{CYAN}"/>
+      <stop offset="100%" stop-color="{MAGENTA}"/>
     </linearGradient>
   </defs>
-  <rect width="{W}" height="{H}" fill="#0d1117" rx="12"/>
-  <rect width="{W}" height="44" rx="12" fill="url(#agrad)" opacity="0.15"/>
-  <text x="16" y="29" font-family="Consolas,Menlo,monospace" font-size="15" font-weight="700" letter-spacing="2" fill="#FF2E97">ACHIEVEMENTS UNLOCKED</text>
+  <rect width="{W}" height="{H}" fill="{BG}" rx="16"/>
+  <rect x="18" y="18" width="4" height="20" rx="2" fill="url(#agrad)"/>
+  <text x="34" y="32" font-family="Consolas,Menlo,monospace" font-size="14" font-weight="700" letter-spacing="2" fill="{CYAN}">OPEN SOURCE SIGNAL</text>
+  <text x="702" y="32" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="{MUTED}">LIVE / GITHUB API</text>
+  <path d="M18 50 H702" stroke="#17364A"/>
 {tiles_svg}</svg>'''
 
 
 def main():
-    os.makedirs(OUT_DIR, exist_ok=True)
     print(f"Fetching data for {USER}...")
     stats = fetch_stats()
     streak_data = fetch_streak()
     print(f"  repos={stats['repos']} stars={stats['stars']} prs={stats['prs']} issues={stats['issues']}")
     print(f"  contributions={stats['contributions']} streak_current={streak_data['current']} streak_longest={streak_data['longest']}")
 
-    # Write stats card
-    p = os.path.join(OUT_DIR, "stats.svg")
-    with open(p, "w", encoding="utf-8") as f:
-        f.write(svg_stats(stats, streak_data))
-    print(f"  wrote {p}")
+    outputs = {
+        "stats.svg": svg_stats(stats, streak_data),
+        "langs.svg": svg_langs(stats),
+        "achievements.svg": svg_achievements(stats, streak_data),
+    }
+    for filename, content in outputs.items():
+        try:
+            ET.fromstring(content)
+        except ET.ParseError as exc:
+            raise ValueError(f"Generated invalid SVG: {filename}") from exc
 
-    # Write langs card
-    p = os.path.join(OUT_DIR, "langs.svg")
-    with open(p, "w", encoding="utf-8") as f:
-        f.write(svg_langs(stats))
-    print(f"  wrote {p}")
-
-    # Write achievements panel
-    p = os.path.join(OUT_DIR, "achievements.svg")
-    with open(p, "w", encoding="utf-8") as f:
-        f.write(svg_achievements(stats, streak_data))
-    print(f"  wrote {p}")
-
-    # Write streak badge (reuse streak_data in stats card, no separate file needed)
-    # But save streak_data as JSON for reference
-    p = os.path.join(OUT_DIR, "streak.json")
-    with open(p, "w") as f:
-        json.dump(streak_data, f, indent=2)
+    outputs["streak.json"] = json.dumps(streak_data, indent=2) + "\n"
+    os.makedirs(OUT_DIR, exist_ok=True)
+    for filename, content in outputs.items():
+        path = os.path.join(OUT_DIR, filename)
+        with open(path, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(content)
+        print(f"  wrote {path}")
 
     print("Done!")
 

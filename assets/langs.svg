@@ -1,28 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="124" viewBox="0 0 440 124">
-  <defs>
-    <linearGradient id="headerGrad2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#FF2E97"/>
-    </linearGradient>
-  </defs>
-  <rect width="440" height="124" fill="#0d1117" rx="12"/>
-  <rect width="440" height="44" rx="12" fill="url(#headerGrad2)" opacity="0.15"/>
-  <text x="16" y="29" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#00E5FF">💻 Top Languages</text>
-  <rect x="16" y="50" width="200.0" height="8" fill="#3572A5" rx="2"/>
-  <rect x="216.0" y="50" width="76.92307692307693" height="8" fill="#3178C6" rx="2"/>
-  <rect x="292.9230769230769" y="50" width="61.53846153846154" height="8" fill="#F7DF1E" rx="2"/>
-  <rect x="354.46153846153845" y="50" width="15.384615384615385" height="8" fill="#701516" rx="2"/>
-  <rect x="369.8461538461538" y="50" width="15.384615384615385" height="8" fill="#4F5D95" rx="2"/>
-  <rect x="385.23076923076917" y="50" width="15.384615384615385" height="8" fill="#89E051" rx="2"/>
-  <rect x="400.6153846153845" y="50" width="15.384615384615385" height="8" fill="#E34C26" rx="2"/>
-  <circle cx="16" cy="82" r="4" fill="#3572A5"/>
-  <text x="24" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Python 50.0%</text>
-  <circle cx="108" cy="82" r="4" fill="#3178C6"/>
-  <text x="116" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">TypeScript 19.2%</text>
-  <circle cx="228" cy="82" r="4" fill="#F7DF1E"/>
-  <text x="236" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">JavaScript 15.4%</text>
-  <circle cx="348" cy="82" r="4" fill="#701516"/>
-  <text x="356" y="86" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">Ruby 3.8%</text>
-  <circle cx="16" cy="104" r="4" fill="#4F5D95"/>
-  <text x="24" y="108" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#c9d1d9">PHP 3.8%</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="140" viewBox="0 0 720 140" role="img" aria-labelledby="title desc">
+  <title id="title">Languages and Tooling</title>
+  <desc id="desc">Primary languages across public source repositories</desc>
+  <rect width="720" height="140" rx="16" fill="#07101C"/>
+  <rect x="18" y="18" width="4" height="18" rx="2" fill="#E85B9C"/>
+  <text x="34" y="31" font-family="Consolas,Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1.6" fill="#59E7D1">LANGUAGES / 主要语言</text>
+  <text x="702" y="31" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7691A5">PUBLIC SOURCE REPOSITORIES</text>
+  <path d="M18 46 H702" stroke="#17364A"/>
+  <rect x="18.00" y="58" width="342.00" height="10" fill="#3572A5" rx="3"/>
+  <rect x="360.00" y="58" width="131.54" height="10" fill="#3178C6" rx="3"/>
+  <rect x="491.54" y="58" width="105.23" height="10" fill="#F7DF1E" rx="3"/>
+  <rect x="596.77" y="58" width="26.31" height="10" fill="#E34C26" rx="3"/>
+  <rect x="623.08" y="58" width="26.31" height="10" fill="#4F5D95" rx="3"/>
+  <rect x="649.38" y="58" width="26.31" height="10" fill="#701516" rx="3"/>
+  <rect x="675.69" y="58" width="26.31" height="10" fill="#89E051" rx="3"/>
+
+  <circle cx="22" cy="97" r="4" fill="#3572A5"/>
+  <text x="32" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#EAF3F8">Python</text>
+  <text x="32" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="#7691A5">50.0%</text>
+
+  <circle cx="159" cy="97" r="4" fill="#3178C6"/>
+  <text x="169" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#EAF3F8">TypeScript</text>
+  <text x="169" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="#7691A5">19.2%</text>
+
+  <circle cx="296" cy="97" r="4" fill="#F7DF1E"/>
+  <text x="306" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#EAF3F8">JavaScript</text>
+  <text x="306" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="#7691A5">15.4%</text>
+
+  <circle cx="433" cy="97" r="4" fill="#E34C26"/>
+  <text x="443" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#EAF3F8">HTML</text>
+  <text x="443" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="#7691A5">3.8%</text>
+
+  <circle cx="570" cy="97" r="4" fill="#4F5D95"/>
+  <text x="580" y="95" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#EAF3F8">PHP</text>
+  <text x="580" y="111" font-family="Consolas,Menlo,monospace" font-size="9" fill="#7691A5">3.8%</text>
 </svg>

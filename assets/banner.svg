@@ -1,44 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="150" viewBox="0 0 720 150" role="img" aria-label="terminal banner">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Xingchuan Security Engineering</title>
+  <desc id="desc">Security researcher and tool builder focused on offensive security, detection and AI automation.</desc>
   <defs>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#FF2E97"/>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#59E7D1"/>
+      <stop offset="0.62" stop-color="#66DDFF"/>
+      <stop offset="1" stop-color="#E85B9C"/>
     </linearGradient>
+    <radialGradient id="cyanGlow" cx="78%" cy="18%" r="62%">
+      <stop offset="0" stop-color="#38D7D0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#07101C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="magentaGlow" cx="8%" cy="92%" r="55%">
+      <stop offset="0" stop-color="#E85B9C" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#07101C" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#59E7D1" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="panelClip"><rect x="1" y="1" width="958" height="298" rx="18"/></clipPath>
   </defs>
 
-  <!-- terminal window -->
-  <rect x="2" y="2" width="716" height="146" rx="10" fill="#0D1117" stroke="url(#neon)" stroke-width="2" filter="url(#glow)"/>
+  <rect x="1" y="1" width="958" height="298" rx="18" fill="#07101C" stroke="url(#frame)" stroke-width="2"/>
+  <g clip-path="url(#panelClip)">
+    <rect width="960" height="300" fill="url(#grid)"/>
+    <rect width="960" height="300" fill="url(#cyanGlow)"/>
+    <rect width="960" height="300" fill="url(#magentaGlow)"/>
+    <path d="M0 50H960" stroke="#17364A"/>
+    <path d="M681 -20L960 259V300H921L643 22Z" fill="#59E7D1" opacity="0.018"/>
+    <path d="M785 -24L960 151" stroke="#66DDFF" stroke-opacity="0.12"/>
+    <path d="M824 -24L960 112" stroke="#E85B9C" stroke-opacity="0.12"/>
+  </g>
 
-  <!-- title bar -->
-  <line x1="2" y1="28" x2="718" y2="28" stroke="url(#neon)" stroke-width="1" opacity="0.6"/>
-  <circle cx="20" cy="15" r="5" fill="#FF5F56"/>
-  <circle cx="38" cy="15" r="5" fill="#FFBD2E"/>
-  <circle cx="56" cy="15" r="5" fill="#27C93F"/>
-  <text x="360" y="19" text-anchor="middle" font-family="monospace" font-size="11" fill="#8B949E">visitor@chu0119: ~/profile — zsh</text>
+  <g font-family="Consolas,Menlo,monospace">
+    <rect x="24" y="19" width="7" height="7" rx="3.5" fill="#59E7D1" filter="url(#softGlow)"/>
+    <text x="42" y="29" font-size="11" font-weight="700" letter-spacing="2.1" fill="#7691A5">XINGCHUAN // SECURITY ENGINEERING</text>
+    <text x="936" y="29" text-anchor="end" font-size="9" letter-spacing="1.5" fill="#59E7D1">OPEN SOURCE · ONLINE</text>
+  </g>
 
-  <!-- looping session: whoami -> nmap -> exploit -> result, 9s cycle -->
-  <g font-family="Consolas,Menlo,monospace" font-size="15">
-    <text x="20" y="56">
-      <tspan fill="#FF2E97">➜</tspan>  <tspan fill="#00E5FF">~/</tspan> <tspan fill="#C9D1D9">whoami</tspan>
-      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.85;0.92;1" dur="9s" repeatCount="indefinite"/>
+  <g transform="translate(42 82)">
+    <text font-family="Segoe UI,Arial,sans-serif" font-size="38" font-weight="750" letter-spacing="-0.8" fill="#EAF3F8">
+      <tspan x="0" y="0">Build systems that turn</tspan>
+      <tspan x="0" y="47" fill="#66DDFF">signals into action.</tspan>
     </text>
-    <text x="20" y="78">
-      <tspan fill="#FF2E97">➜</tspan>  <tspan fill="#00E5FF">~/</tspan> <tspan fill="#C9D1D9">nmap -sV --top-ports 1000 10.0.0.0/24</tspan>
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.32;0.85;0.92;1" dur="9s" repeatCount="indefinite"/>
-    </text>
-    <text x="20" y="100">
-      <tspan fill="#FF2E97">➜</tspan>  <tspan fill="#00E5FF">~/</tspan> <tspan fill="#C9D1D9">./exploit --mode stealth_</tspan>
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.54;0.85;0.92;1" dur="9s" repeatCount="indefinite"/>
-    </text>
-    <text x="20" y="130" font-size="17" font-weight="bold" fill="url(#neon)" filter="url(#glow)">
-      <tspan fill="#27C93F">[+]</tspan> <tspan>access granted · security research in progress</tspan>
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64;0.72;0.85;0.92;1" dur="9s" repeatCount="indefinite"/>
-    </text>
+    <rect x="0" y="72" width="58" height="3" rx="1.5" fill="#59E7D1"/>
+    <rect x="64" y="72" width="18" height="3" rx="1.5" fill="#E85B9C"/>
+    <text x="0" y="106" font-family="Microsoft YaHei,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#B8CAD6">把安全信号转化为可执行的检测、响应与工程化工具。</text>
+    <text x="0" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#7691A5">SECURITY RESEARCHER · TOOL BUILDER · PRACTICAL AUTOMATION</text>
+  </g>
+
+  <g transform="translate(664 76)">
+    <rect width="248" height="142" rx="14" fill="#0C1D2C" fill-opacity="0.88" stroke="#24506A"/>
+    <path d="M16 42H232" stroke="#17364A"/>
+    <text x="16" y="26" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#59E7D1">SIGNAL MAP / 03 DOMAINS</text>
+
+    <g font-family="Consolas,Menlo,monospace" font-size="9" font-weight="700" letter-spacing="1.1">
+      <circle cx="24" cy="64" r="4" fill="#59E7D1"/><text x="38" y="67" fill="#DCE9F2">OFFENSIVE</text>
+      <circle cx="24" cy="90" r="4" fill="#66DDFF"/><text x="38" y="93" fill="#DCE9F2">DEFENSIVE</text>
+      <circle cx="24" cy="116" r="4" fill="#E85B9C"/><text x="38" y="119" fill="#DCE9F2">ENGINEERING</text>
+    </g>
+
+    <g transform="translate(142 55)" fill="none" stroke-linecap="round">
+      <path d="M0 56L11 45L22 50L34 29L45 36L56 12L68 21L80 4" stroke="#59E7D1" stroke-width="2"/>
+      <path d="M0 65H84" stroke="#24506A"/>
+      <circle cx="34" cy="29" r="3" fill="#07101C" stroke="#66DDFF"/>
+      <circle cx="56" cy="12" r="3" fill="#07101C" stroke="#E85B9C"/>
+      <circle cx="80" cy="4" r="3" fill="#07101C" stroke="#59E7D1" filter="url(#softGlow)"/>
+    </g>
+  </g>
+
+  <g transform="translate(42 260)" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2">
+    <text fill="#7691A5">AUTHORIZED RESEARCH</text>
+    <text x="170" fill="#7691A5">THREAT INTELLIGENCE</text>
+    <text x="350" fill="#7691A5">INCIDENT RESPONSE</text>
+    <text x="520" fill="#7691A5">AI AUTOMATION</text>
+    <path d="M0 15H876" stroke="#17364A"/>
+    <rect x="0" y="14" width="124" height="2" fill="#59E7D1"/>
+    <rect x="124" y="14" width="32" height="2" fill="#E85B9C"/>
   </g>
 </svg>
