@@ -34,14 +34,55 @@ def gql(query, variables=None):
         return json.load(r)["data"]
 
 
+def normalize_stats(user):
+    """Normalize the public profile data used by the SVG renderers."""
+    public_repositories = user.get("publicRepositories") or {}
+    source_repositories = user.get("sourceRepositories") or {}
+    pull_requests = user.get("pullRequests") or {}
+    issues = user.get("issues") or {}
+    contributions = user.get("contributionsCollection") or {}
+    calendar = contributions.get("contributionCalendar") or {}
+    nodes = source_repositories.get("nodes") or []
+    repos = [repo for repo in nodes if repo]
+
+    lang_counts = {}
+    for repo in repos:
+        language = repo.get("primaryLanguage")
+        if language and language.get("name"):
+            name = language["name"]
+            lang_counts[name] = lang_counts.get(name, 0) + 1
+
+    return {
+        "repos": public_repositories.get("totalCount", 0) or 0,
+        "stars": sum(repo.get("stargazerCount", 0) or 0 for repo in repos),
+        "prs": pull_requests.get("totalCount", 0) or 0,
+        "issues": issues.get("totalCount", 0) or 0,
+        "contributions": calendar.get("totalContributions", 0) or 0,
+        "top_langs": sorted(
+            lang_counts.items(), key=lambda item: (-item[1], item[0])
+        )[:8],
+    }
+
+
 def fetch_stats():
-    """Fetch user stats via GraphQL."""
+    """Fetch public repository stats and aggregate source repositories."""
     q = '''
     query($login: String!) {
       user(login: $login) {
         name
-        repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
+        publicRepositories: repositories(
+          ownerAffiliations: OWNER,
+          privacy: PUBLIC,
+          first: 1
+        ) {
           totalCount
+        }
+        sourceRepositories: repositories(
+          ownerAffiliations: OWNER,
+          privacy: PUBLIC,
+          isFork: false,
+          first: 100
+        ) {
           nodes { stargazerCount primaryLanguage { name color } }
         }
         pullRequests(first: 1) { totalCount }
@@ -52,24 +93,7 @@ def fetch_stats():
       }
     }
     '''
-    data = gql(q, {"login": USER})["user"]
-    repos = data["repositories"]
-    total_stars = sum(r["stargazerCount"] for r in repos["nodes"])
-    lang_counts = {}
-    for r in repos["nodes"]:
-        pl = r.get("primaryLanguage")
-        if pl:
-            lang_counts[pl["name"]] = lang_counts.get(pl["name"], 0) + 1
-    # sort by count desc
-    top_langs = sorted(lang_counts.items(), key=lambda x: -x[1])[:8]
-    return {
-        "repos": repos["totalCount"],
-        "stars": total_stars,
-        "prs": data["pullRequests"]["totalCount"],
-        "issues": data["issues"]["totalCount"],
-        "contributions": data["contributionsCollection"]["contributionCalendar"]["totalContributions"],
-        "top_langs": top_langs,
-    }
+    return normalize_stats(gql(q, {"login": USER})["user"])
 
 
 def fetch_streak():
