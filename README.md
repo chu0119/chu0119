@@ -152,7 +152,6 @@ $ ./monitor --live
 - 🚀 **DarkForest-Hunter** — pushed to it
 - ⭐ **Tencent/AI-Infra-Guard** — starred it
 - ⭐ **zhaoxuya520/reverse-skill** — starred it
-- 📦 **sqlmap-toolkit** — released it
 <!-- END ACTIVITY -->
 
 ```text
