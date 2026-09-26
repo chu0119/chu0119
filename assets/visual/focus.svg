@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="322" viewBox="0 0 720 322" role="img" aria-labelledby="title desc">
+  <title id="title">RESEARCH FOCUS / 研究方向</title>
+  <desc id="desc">03 ACTIVE DOMAINS</desc>
+  <defs>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#59E7D1"/>
+      <stop offset="65%" stop-color="#66DDFF"/>
+      <stop offset="100%" stop-color="#E85B9C"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#10283A" stroke-width="0.6" opacity="0.42"/>
+    </pattern>
+  </defs>
+  <rect width="720" height="322" rx="16" fill="#07101C"/>
+  <rect x="0.75" y="0.75" width="718.5" height="320.5" rx="15" fill="none" stroke="url(#edge)" stroke-opacity="0.42"/>
+  <rect width="720" height="322" rx="16" fill="url(#grid)"/>
+  <rect x="18" y="18" width="4" height="20" rx="2" fill="#59E7D1"/>
+  <text x="34" y="32" font-family="Consolas,Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1.7" fill="#59E7D1">RESEARCH FOCUS / 研究方向</text>
+  <text x="702" y="31" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.2" fill="#7691A5">03 ACTIVE DOMAINS</text>
+  <path d="M18 49H702" stroke="#17364A"/>
+  <rect x="18" y="65" width="684" height="70" rx="10" fill="#0A1724" stroke="#59E7D1" stroke-opacity="0.32"/>
+  <text x="38" y="96" font-family="Consolas,Menlo,monospace" font-size="22" font-weight="700" fill="#59E7D1">01</text>
+  <path d="M70 80V120" stroke="#17364A"/>
+  <text x="88" y="91" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF3F8">攻防与漏洞研究</text>
+  <text x="88" y="113" font-family="Consolas,Menlo,monospace" font-size="8.5" letter-spacing="0.75" fill="#7691A5">OFFENSIVE SECURITY &amp; VULNERABILITY RESEARCH</text>
+  <text x="680" y="104" text-anchor="end" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="12" fill="#EAF3F8">面向授权场景的漏洞发现、验证与治理。</text>
+  <rect x="18" y="148" width="684" height="70" rx="10" fill="#0A1724" stroke="#E85B9C" stroke-opacity="0.32"/>
+  <text x="38" y="179" font-family="Consolas,Menlo,monospace" font-size="22" font-weight="700" fill="#E85B9C">02</text>
+  <path d="M70 163V203" stroke="#17364A"/>
+  <text x="88" y="174" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF3F8">检测、研判与响应</text>
+  <text x="88" y="196" font-family="Consolas,Menlo,monospace" font-size="8.5" letter-spacing="0.75" fill="#7691A5">DETECTION · THREAT INTELLIGENCE · INCIDENT RESPONSE</text>
+  <text x="680" y="187" text-anchor="end" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="12" fill="#EAF3F8">从日志与流量中提取线索，形成可解释的安全结论。</text>
+  <rect x="18" y="231" width="684" height="70" rx="10" fill="#0A1724" stroke="#59E7D1" stroke-opacity="0.32"/>
+  <text x="38" y="262" font-family="Consolas,Menlo,monospace" font-size="22" font-weight="700" fill="#59E7D1">03</text>
+  <path d="M70 246V286" stroke="#17364A"/>
+  <text x="88" y="257" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF3F8">AI 安全自动化</text>
+  <text x="88" y="279" font-family="Consolas,Menlo,monospace" font-size="8.5" letter-spacing="0.75" fill="#7691A5">AI-POWERED SECURITY TOOLING</text>
+  <text x="680" y="270" text-anchor="end" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="12" fill="#EAF3F8">用智能工作流缩短侦察、分析、处置与报告链路。</text>
+</svg>
