@@ -162,7 +162,6 @@
 <!-- BEGIN ACTIVITY -->
 - 🚀 [**DarkForest-Hunter**](https://github.com/chu0119/DarkForest-Hunter) — pushed updates
 - ⭐ [**Tencent/AI-Infra-Guard**](https://github.com/Tencent/AI-Infra-Guard) — starred this project
-- ⭐ [**zhaoxuya520/reverse-skill**](https://github.com/zhaoxuya520/reverse-skill) — starred this project
 <!-- END ACTIVITY -->
 
 ## 协作 · Collaboration
