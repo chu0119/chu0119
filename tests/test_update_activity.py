@@ -67,3 +67,4 @@ def test_main_writes_activity_svg_alongside_hidden_markdown(tmp_path, monkeypatc
     activity = tmp_path / "assets" / "activity.svg"
     assert activity.exists()
     ET.parse(activity)
+    assert activity.read_text(encoding="utf-8").endswith("\n")

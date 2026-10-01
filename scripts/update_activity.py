@@ -119,7 +119,7 @@ def main():
     ET.fromstring(activity_svg)
     os.makedirs(os.path.dirname(ACTIVITY_PATH), exist_ok=True)
     with open(ACTIVITY_PATH, "w", encoding="utf-8", newline="\n") as f:
-        f.write(activity_svg)
+        f.write(activity_svg + "\n")
     if updated != readme:
         with open("README.md", "w", encoding="utf-8") as f:
             f.write(updated)
