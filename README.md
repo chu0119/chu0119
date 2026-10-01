@@ -93,7 +93,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- ✨ [**vc-strike**](https://github.com/chu0119/vc-strike) — created something new
+- 📦 [**vc-strike**](https://github.com/chu0119/vc-strike) — published a release
+- ⭐ [**StanleyNull/AutoHunter**](https://github.com/StanleyNull/AutoHunter) — starred this project
 - 🚀 [**DarkForest-Hunter**](https://github.com/chu0119/DarkForest-Hunter) — pushed updates
 - ⭐ [**Tencent/AI-Infra-Guard**](https://github.com/Tencent/AI-Infra-Guard) — starred this project
 <!-- END ACTIVITY -->
