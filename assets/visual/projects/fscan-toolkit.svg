@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="126" viewBox="0 0 720 126" role="img" aria-labelledby="title desc">
+  <title id="title">fscan-toolkit</title>
+  <desc id="desc">Command building and report parsing for practical assessment.</desc>
+  <defs>
+    <linearGradient id="card-edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#59E7D1"/>
+      <stop offset="100%" stop-color="#59E7D1" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="126" rx="14" fill="#07101C"/>
+  <rect x="0.75" y="0.75" width="718.5" height="124.5" rx="13" fill="none" stroke="url(#card-edge)" stroke-opacity="0.72"/>
+  <rect x="18" y="18" width="52" height="90" rx="9" fill="#0C1D2C" stroke="#59E7D1" stroke-opacity="0.35"/>
+  <text x="44" y="57" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="8" letter-spacing="0.6" fill="#7691A5">PROJECT //</text>
+  <text x="44" y="84" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="22" font-weight="700" fill="#59E7D1">01</text>
+  <text x="90" y="39" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#EAF3F8">fscan-toolkit</text>
+  <text x="694" y="37" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="8.5" letter-spacing="0.9" fill="#59E7D1">HTML · SECURITY WORKFLOW UX</text>
+  <path d="M90 51H694" stroke="#17364A"/>
+  <text x="90" y="76" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="13" fill="#EAF3F8">把内网评估命令与结果整理成清晰、可复用的工作流。</text>
+  <text x="90" y="99" font-family="Segoe UI,Arial,sans-serif" font-size="10.5" fill="#7691A5">Command building and report parsing for practical assessment.</text>
+  <path d="M681 109h13v-13" fill="none" stroke="#59E7D1" stroke-width="1.5"/>
+</svg>

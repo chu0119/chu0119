@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" role="img" aria-labelledby="title desc">
+  <title id="title">Recent Activity</title>
+  <desc id="desc">Recent public GitHub activity for xingchuan</desc>
+  <defs>
+    <linearGradient id="activity-edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#59E7D1"/>
+      <stop offset="100%" stop-color="#E85B9C"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="300" rx="16" fill="#07101C"/>
+  <rect x="0.75" y="0.75" width="718.5" height="298.5" rx="15" fill="none" stroke="url(#activity-edge)" stroke-opacity="0.42"/>
+  <rect x="18" y="18" width="4" height="20" rx="2" fill="#E85B9C"/>
+  <text x="34" y="32" font-family="Consolas,Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1.7" fill="#59E7D1">RECENT ACTIVITY / 最近动态</text>
+  <text x="702" y="31" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.1" fill="#7691A5">PUBLIC EVENTS · LIVE FEED</text>
+  <path d="M18 49H702" stroke="#17364A"/>
+  <rect x="18" y="70" width="684" height="34" rx="8" fill="#0C1D2C" stroke="#59E7D1" stroke-opacity="0.25"/>
+  <text x="34" y="92" font-family="Consolas,Menlo,monospace" font-size="9" font-weight="700" fill="#59E7D1">01</text>
+  <text x="70" y="92" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#EAF3F8">DarkForest-Hunter</text>
+  <text x="686" y="92" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="8.5" fill="#7691A5">PUSHED UPDATES</text>
+  <rect x="18" y="112" width="684" height="34" rx="8" fill="#0C1D2C" stroke="#E85B9C" stroke-opacity="0.25"/>
+  <text x="34" y="134" font-family="Consolas,Menlo,monospace" font-size="9" font-weight="700" fill="#E85B9C">02</text>
+  <text x="70" y="134" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#EAF3F8">Tencent/AI-Infra-Guard</text>
+  <text x="686" y="134" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="8.5" fill="#7691A5">STARRED THIS PROJECT</text>
+  <rect x="18" y="154" width="684" height="34" rx="8" fill="#0C1D2C" stroke="#59E7D1" stroke-opacity="0.25"/>
+  <text x="34" y="176" font-family="Consolas,Menlo,monospace" font-size="9" font-weight="700" fill="#59E7D1">03</text>
+  <text x="70" y="176" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#EAF3F8">zhaoxuya520/reverse-skill</text>
+  <text x="686" y="176" text-anchor="end" font-family="Consolas,Menlo,monospace" font-size="8.5" fill="#7691A5">STARRED THIS PROJECT</text>
+  <text x="18" y="282" font-family="Consolas,Menlo,monospace" font-size="8" letter-spacing="1" fill="#7691A5">GITHUB PUBLIC EVENT STREAM · UPDATED BY REPOSITORY WORKFLOW</text>
+</svg>
