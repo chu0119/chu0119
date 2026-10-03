@@ -93,9 +93,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- 📦 [**vc-strike**](https://github.com/chu0119/vc-strike) — published a release
+- 🚀 [**vc-strike**](https://github.com/chu0119/vc-strike) — pushed updates
 - ⭐ [**clash-verge-rev/clash-verge-rev**](https://github.com/clash-verge-rev/clash-verge-rev) — starred this project
-- ⭐ [**StanleyNull/AutoHunter**](https://github.com/StanleyNull/AutoHunter) — starred this project
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
