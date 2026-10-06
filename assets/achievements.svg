@@ -25,7 +25,7 @@
   <path d="M442 84 V91 Q442 96 447 96 H452 V89" fill="none" stroke="#E85B9C" stroke-width="1.5"/>
   <circle cx="442" cy="83" r="2.5" fill="#E85B9C"/>
   <circle cx="452" cy="87" r="2.5" fill="#E85B9C"/>
-  <text x="447" y="125" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#EAF3F8">17</text>
+  <text x="447" y="125" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#EAF3F8">18</text>
   <text x="447" y="146" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="9" letter-spacing="1.5" fill="#7691A5">TOTAL FORKS</text>
   <rect x="541" y="66" width="163" height="92" rx="8" fill="#161b22" stroke="#E85B9C" stroke-opacity="0.55"/>
   <rect x="615" y="91" width="4" height="6" fill="#27C93F" rx="1"/>
