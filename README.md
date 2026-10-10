@@ -93,6 +93,9 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- ✨ [**artex-skill**](https://github.com/chu0119/artex-skill) — created something new
+- 🚀 [**ARTEX**](https://github.com/chu0119/ARTEX) — pushed updates
+- ⭐ [**Mortal004/Xuexitong_shuake**](https://github.com/Mortal004/Xuexitong_shuake) — starred this project
 - 🚀 [**vc-strike**](https://github.com/chu0119/vc-strike) — pushed updates
 <!-- END ACTIVITY -->
 
