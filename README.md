@@ -93,11 +93,11 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- 🍴 [**Autumn-27/Norma**](https://github.com/Autumn-27/Norma) — forked this project
 - 🚀 [**proxy-harvest**](https://github.com/chu0119/proxy-harvest) — pushed updates
 - ⭐ [**matro7sh/BypassAV**](https://github.com/matro7sh/BypassAV) — starred this project
 - ✨ [**artex-skill**](https://github.com/chu0119/artex-skill) — created something new
 - 🚀 [**ARTEX**](https://github.com/chu0119/ARTEX) — pushed updates
-- ⭐ [**Mortal004/Xuexitong_shuake**](https://github.com/Mortal004/Xuexitong_shuake) — starred this project
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
