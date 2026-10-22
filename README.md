@@ -94,6 +94,7 @@ Metrics are generated daily from explicitly public repositories through the GitH
 
 <!-- BEGIN ACTIVITY -->
 - 🚀 [**ARTEX**](https://github.com/chu0119/ARTEX) — pushed updates
+- ⭐ [**ys-ll/uniterm**](https://github.com/ys-ll/uniterm) — starred this project
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
