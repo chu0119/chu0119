@@ -93,8 +93,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- 🧪 [**farion1231/cc-switch**](https://github.com/farion1231/cc-switch) — worked on this project
 - 🚀 [**ARTEX**](https://github.com/chu0119/ARTEX) — pushed updates
+- 🧪 [**farion1231/cc-switch**](https://github.com/farion1231/cc-switch) — worked on this project
 - ⭐ [**ys-ll/uniterm**](https://github.com/ys-ll/uniterm) — starred this project
 <!-- END ACTIVITY -->
 
