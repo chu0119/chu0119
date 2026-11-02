@@ -93,7 +93,7 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- 🚀 [**ARTEX**](https://github.com/chu0119/ARTEX) — pushed updates
+- 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
 - ⭐ [**experientiallabs/experiential**](https://github.com/experientiallabs/experiential) — starred this project
 - ⭐ [**builtbybel/FluentCleaner**](https://github.com/builtbybel/FluentCleaner) — starred this project
 - 🧪 [**farion1231/cc-switch**](https://github.com/farion1231/cc-switch) — worked on this project
