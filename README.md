@@ -94,9 +94,6 @@ Metrics are generated daily from explicitly public repositories through the GitH
 
 <!-- BEGIN ACTIVITY -->
 - 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
-- ⭐ [**experientiallabs/experiential**](https://github.com/experientiallabs/experiential) — starred this project
-- ⭐ [**builtbybel/FluentCleaner**](https://github.com/builtbybel/FluentCleaner) — starred this project
-- 🧪 [**farion1231/cc-switch**](https://github.com/farion1231/cc-switch) — worked on this project
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
