@@ -94,6 +94,7 @@ Metrics are generated daily from explicitly public repositories through the GitH
 
 <!-- BEGIN ACTIVITY -->
 - 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
+- 🚀 [**pojun-skill**](https://github.com/chu0119/pojun-skill) — pushed updates
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
