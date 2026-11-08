@@ -93,8 +93,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
+- 🚀 [**tg-monitor-v2**](https://github.com/chu0119/tg-monitor-v2) — pushed updates
 - 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
-- 🚀 [**pojun-skill**](https://github.com/chu0119/pojun-skill) — pushed updates
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
