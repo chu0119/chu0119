@@ -94,8 +94,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 
 <!-- BEGIN ACTIVITY -->
 - 🚀 [**tg-monitor-v2**](https://github.com/chu0119/tg-monitor-v2) — pushed updates
-- ⭐ [**Minireel/HGhub**](https://github.com/Minireel/HGhub) — starred this project
 - 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
+- ⭐ [**Minireel/HGhub**](https://github.com/Minireel/HGhub) — starred this project
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
