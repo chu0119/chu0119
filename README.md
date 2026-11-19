@@ -93,7 +93,8 @@ Metrics are generated daily from explicitly public repositories through the GitH
 ### 最近动态 · Recent Activity
 
 <!-- BEGIN ACTIVITY -->
-- 🧪 [**Pojun**](https://github.com/chu0119/Pojun) — worked on this project
+- 🚀 [**Pojun**](https://github.com/chu0119/Pojun) — pushed updates
+- 🚀 [**sqgj-auto-learn**](https://github.com/chu0119/sqgj-auto-learn) — pushed updates
 <!-- END ACTIVITY -->
 
 ### 协作 · Collaboration
